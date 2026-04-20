@@ -1,18 +1,18 @@
 from ecosystem import Ecosystem
 from organism import Organism
+from utils import event
 
 def main():
     # Создание 3-х объектов
     eco = Ecosystem()
-    rabbit = Organism("Заяц", 20)
-    fox = Organism("Лиса", 30)
-    plant = Organism("Растение", 30)
-
+    
     # Добавление
-    eco.add_organism(rabbit)
-    eco.add_organism(fox)
-    eco.add_organism(plant)
-
+    eco.add_organism(Organism("Растение", 30))
+    eco.add_organism(Organism("Лиса", 30))
+    eco.add_organism(Organism("Заяц", 20))
+    
+    event()
+    
     # Старт симуляции
     eco.simulate_day()
 
