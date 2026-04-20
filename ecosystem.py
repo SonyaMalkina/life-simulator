@@ -1,8 +1,11 @@
 from organism import Organism
+from config_loader import Configuration
 
 class Ecosystem:
     """ Класс симулирующий экосистему """
     def __init__(self):
+        self.config = Configuration
+        self.consumption = self.config.get("simulation", "energy_consumption")
         self.organisms = []
 
     """ Добавление организма в экосистему """
@@ -13,6 +16,6 @@ class Ecosystem:
     def simulate_day(self):
         for org in self.organisms:
             if org.is_alive():
-                org.eat(10)
+                org.eat(-self.consumption)
             else:
                 print(f"{org.name} мёртв.")
